@@ -1,0 +1,16 @@
+{
+    "name": "Algorithm",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3fb89170939dddc43ac911ca8186d084"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
