@@ -15,7 +15,6 @@ namespace GameFramework
     internal partial class UIWindowManager
     {
         private Transform transform;
-        private Transform windowRoot;
         private Dictionary<string, UIWindowReference> windowReferences = new Dictionary<string, UIWindowReference>();
         private Dictionary<string, UIWindow> allWindows = new Dictionary<string, UIWindow>();
         private Dictionary<int, Transform> allLayers = new Dictionary<int, Transform>();
@@ -38,34 +37,9 @@ namespace GameFramework
         private void BuildWindowLayers()
         {
             UISetting setting = UISetting.Instance;
-            if (setting.WindowRoot.RuntimeKeyIsValid())
+            for (int i = 0; i < setting.WindowLayers.Length; i++)
             {
-                AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(setting.WindowRoot, transform);
-                handle.WaitForCompletion();
-                windowRoot = handle.Result.transform;
-#if UNITY_EDITOR
-                windowRoot.name = windowRoot.name.Replace("(Clone)", "");
-#endif
-                for (int i = 0; i < setting.WindowLayers.Length; i++)
-                {
-                    AddWindowLayer(i, setting.WindowLayers[i]);
-                }
-            }
-            else
-            {
-                windowRoot = new GameObject("WindowRoot").AddComponent<RectTransform>();
-                Canvas canvas = windowRoot.gameObject.AddComponent<Canvas>();
-                CanvasScaler scaler = windowRoot.gameObject.AddComponent<CanvasScaler>();
-                windowRoot.gameObject.AddComponent<GraphicRaycaster>();
-                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
-                scaler.referenceResolution = new Vector2(1920f, 1080f);
-                windowRoot.SetParent(transform);
-                for (int i = 0; i < setting.WindowLayers.Length; i++)
-                {
-                    AddWindowLayer(i, setting.WindowLayers[i]);
-                }
+                AddWindowLayer(i, setting.WindowLayers[i]);
             }
         }
 
@@ -81,20 +55,35 @@ namespace GameFramework
             }
         }
 
-        private void AddWindowLayer(int layer, string layerName)
+        private void AddWindowLayer(int layer, UISetting.WindowLayer windowLayer)
         {
-            if (!windowRoot.Find(layerName))
+            if (!transform.Find(windowLayer.Name))
             {
-                RectTransform rectTrs = new GameObject(layerName).AddComponent<RectTransform>();
-                rectTrs.SetParent(windowRoot);
+                UISetting.CanvasSetting setting = UISetting.Instance.CanvasSettings;
+                RectTransform rectTrs = new GameObject(windowLayer.Name).AddComponent<RectTransform>();
+                rectTrs.SetParent(transform);
                 rectTrs.AdjustAnchor(AnchorLeftType.Stretch, AnchorTopType.Stretch);
                 rectTrs.ResetLocal();
+                Canvas canvas = rectTrs.gameObject.AddComponent<Canvas>();
+                CanvasScaler scaler = rectTrs.gameObject.AddComponent<CanvasScaler>();
+                rectTrs.gameObject.AddComponent<GraphicRaycaster>();
+                canvas.sortingOrder = windowLayer.Sort;
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                scaler.uiScaleMode = setting.ScaleMode;
+                scaler.screenMatchMode = setting.ScreenMatchMode;
+                scaler.matchWidthOrHeight = setting.Match;
+                scaler.referenceResolution = setting.ReferenceResolution;
                 allLayers.Add(layer, rectTrs);
             }
         }
 
         private void SetSiblingIndex(UIWindow window)
         {
+            if (window.Layer == 0)
+            {
+                return;
+            }
+            
             int index = 0;
             foreach (UIWindow tempWindow in allWindows.Values)
             {

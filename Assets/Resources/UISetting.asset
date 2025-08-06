@@ -13,14 +13,18 @@ MonoBehaviour:
   m_Name: UISetting
   m_EditorClassIdentifier: 
   WindowPath: Assets/Prefabs/Windows
-  WindowRoot:
-    m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  CanvasSettings:
+    ScaleMode: 1
+    ScreenMatchMode: 0
+    Match: 0
+    ReferenceResolution: {x: 1920, y: 1080}
   WindowLayers:
-  - FullScreen
-  - Fix
-  - PopUp
-  - Top
+  - Name: FullScreen
+    Sort: 0
+  - Name: Fix
+    Sort: 1000
+  - Name: PopUp
+    Sort: 2000
+  - Name: Top
+    Sort: 3000
   ControllerPresetManager: {fileID: 0}

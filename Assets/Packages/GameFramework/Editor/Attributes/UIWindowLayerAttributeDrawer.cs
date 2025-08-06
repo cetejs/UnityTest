@@ -6,9 +6,20 @@ namespace GameFramework
     [CustomPropertyDrawer(typeof(UIWindowLayerAttribute))]
     internal class UIWindowLayerAttributeDrawer : SupportReadOnlyDrawer
     {
+        private static string[] displayedOptions;
+        
         public override void OnPropertyGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            string[] displayedOptions = UISetting.Instance.WindowLayers;
+            if (displayedOptions == null)
+            {
+                UISetting.WindowLayer[] windowLayers = UISetting.Instance.WindowLayers;
+                displayedOptions = new string[windowLayers.Length];
+                for (int i = 0; i < displayedOptions.Length; i++)
+                {
+                    displayedOptions[i] = windowLayers[i].Name;
+                }
+            }
+
             if (displayedOptions == null || displayedOptions.Length == 0)
             {
                 GUIStyle style = new GUIStyle(GUI.skin.label);

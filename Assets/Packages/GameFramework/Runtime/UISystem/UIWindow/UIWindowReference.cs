@@ -36,7 +36,6 @@ namespace GameFramework
                 }
 
                 prefab = handle.Result.GetComponent<UIWindow>();
-                prefab.gameObject.SetActive(false);
                 return prefab;
             }
 
@@ -51,7 +50,6 @@ namespace GameFramework
                 handle.Completed += _ =>
                 {
                     prefab = handle.Result.GetComponent<UIWindow>();
-                    prefab.gameObject.SetActive(false);
                     callback.Invoke(prefab);
                 };
             }
