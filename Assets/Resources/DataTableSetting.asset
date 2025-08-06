@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5e351ed19f4de19ce660cda74406bb, type: 3}
+  m_Name: DataTableSetting
+  m_EditorClassIdentifier: 
+  RootPath: F:\Unity\Project\UnityTest
+  ExcelRootPath: RawTables
+  TableBuildPath: Assets/Configs/Tables
+  ScriptBuildPath: Assets/Scripts/Tables
+  CharacterSetBuildPath: Assets/CharacterSet
+  ScriptNamespace: GameFramework
+  LocalizationName: Localization
+  ExportCommonCharacterSet: 1
+  UseCrypto: 0
+  Password: password
