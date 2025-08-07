@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathFinding: {fileID: 190950383}
   moveSpeed: 5
-  angleSpeed: 5
+  angleSpeed: 120
 --- !u!23 &324183606
 MeshRenderer:
   m_ObjectHideFlags: 0

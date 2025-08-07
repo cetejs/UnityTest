@@ -61,7 +61,7 @@ namespace Algorithm
                 {
                     Vector3 direction = offset.normalized;
                     transform.position += direction * speed;
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), angleSpeed * Time.deltaTime);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), angleSpeed * Time.deltaTime);
                 }
             }
         }
