@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DataStructure;
+using UnityEngine;
 
 public class MatrixConvertTest : MonoBehaviour {
     public Transform testGo;
@@ -13,7 +14,7 @@ public class MatrixConvertTest : MonoBehaviour {
 
         var e = testGo.eulerAngles;
         var q = testGo.rotation;
-        var m = UnityEngine.Matrix4x4.Rotate(q);
+        var m = Matrix4x4.Rotate(q);
         e.x = QuaternionUtil.WrapPi(e.x);
         e.y = QuaternionUtil.WrapPi(e.y);
         e.z = QuaternionUtil.WrapPi(e.z);
@@ -33,27 +34,27 @@ public class MatrixConvertTest : MonoBehaviour {
         Debug.Log($"q: {q}\tm2q: {m2q}");
     }
 
-    private Quaternion EulerToQuaternion(Vector3 e) {
-        return Quaternion.Euler(e);
+    private CustomQuaternion EulerToQuaternion(Vector3 e) {
+        return CustomQuaternion.Euler(e);
     }
 
-    private Matrix4x4 EulerToMatrix(Vector3 euler) {
-        return Matrix4x4.Rotate(euler);
+    private CustomMatrix4x4 EulerToMatrix(Vector3 euler) {
+        return CustomMatrix4x4.Rotate(euler);
     }
 
-    private Vector3 QuaternionToEuler(Quaternion q) {
-        return Quaternion.ToEuler(q);
+    private Vector3 QuaternionToEuler(CustomQuaternion q) {
+        return CustomQuaternion.ToEuler(q);
     }
 
-    private Matrix4x4 QuaternionToMatrix(Quaternion q) {
-        return Quaternion.ToMatrix(q);
+    private CustomMatrix4x4 QuaternionToMatrix(CustomQuaternion q) {
+        return CustomQuaternion.ToMatrix(q);
     }
 
-    private Vector3 MatrixToEuler(Matrix4x4 m) {
-        return Matrix4x4.ToEuler(m);
+    private Vector3 MatrixToEuler(CustomMatrix4x4 m) {
+        return CustomMatrix4x4.ToEuler(m);
     }
 
-    private Quaternion MatrixToQuaternion(Matrix4x4 m) {
-        return Matrix4x4.ToQuaternion(m);
+    private CustomQuaternion MatrixToQuaternion(CustomMatrix4x4 m) {
+        return CustomMatrix4x4.ToQuaternion(m);
     }
 }

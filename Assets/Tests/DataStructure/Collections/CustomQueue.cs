@@ -2,7 +2,7 @@
 
 namespace DataStructure
 {
-    public class Queue<T>
+    public class CustomQueue<T>
     {
         private T[] items;
         private int head;
@@ -13,7 +13,7 @@ namespace DataStructure
 
         public int Count => size;
 
-        public Queue()
+        public CustomQueue()
         {
             items = EmptyArray;
             head = 0;
@@ -21,7 +21,7 @@ namespace DataStructure
             size = 0;
         }
 
-        public Queue(int capacity)
+        public CustomQueue(int capacity)
         {
             items = new T[capacity];
             head = 0;

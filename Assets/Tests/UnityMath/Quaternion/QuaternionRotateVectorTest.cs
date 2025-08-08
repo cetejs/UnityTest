@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DataStructure;
+using UnityEngine;
 
 public class QuaternionRotateVectorTest : MonoBehaviour {
     public AutoRandomRotate target;

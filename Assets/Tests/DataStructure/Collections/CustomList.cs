@@ -2,7 +2,7 @@
 
 namespace DataStructure
 {
-    public class List<T>
+    public class CustomList<T>
     {
         private T[] items;
         private int size;
@@ -33,13 +33,13 @@ namespace DataStructure
             }
         }
 
-        public List()
+        public CustomList()
         {
             items = EmptyArray;
             size = 0;
         }
 
-        public List(int capacity)
+        public CustomList(int capacity)
         {
             items = new T[capacity];
             size = 0;
@@ -119,7 +119,7 @@ namespace DataStructure
             return -1;
         }
 
-        public void AddRange(List<T> items)
+        public void AddRange(CustomList<T> items)
         {
             InsertRange(size, items);
         }
@@ -129,7 +129,7 @@ namespace DataStructure
             InsertRange(size, items);
         }
 
-        public void InsertRange(int index, List<T> items)
+        public void InsertRange(int index, CustomList<T> items)
         {
             if (items == null)
             {

@@ -9,7 +9,7 @@ namespace Tests
         [Test]
         public void Test()
         {
-            Stack<int> stack = new Stack<int>();
+            CustomStack<int> stack = new CustomStack<int>();
             Debug.Log("Push(1, 2, 3, 4)");
             for (int i = 1; i < 5; i++)
             {

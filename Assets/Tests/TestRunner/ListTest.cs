@@ -9,7 +9,7 @@ namespace Tests
         [Test]
         public void Test()
         {
-            List<int> list = new List<int>();
+            CustomList<int> list = new CustomList<int>();
             Debug.Log("Add(1, 2, 3, 4)");
             for (int i = 1; i < 5; i++)
             {

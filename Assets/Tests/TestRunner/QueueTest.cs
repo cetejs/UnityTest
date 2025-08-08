@@ -9,7 +9,7 @@ namespace Tests
         [Test]
         public void Test()
         {
-            Queue<int> queue = new Queue<int>();
+            CustomQueue<int> queue = new CustomQueue<int>();
             Debug.Log("Enqueue(1, 2, 3, 4)");
             for (int i = 1; i < 5; i++)
             {

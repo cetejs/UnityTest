@@ -2,7 +2,7 @@
 
 namespace DataStructure
 {
-    public class Dictionary<TKey, TValue>
+    public class CustomDictionary<TKey, TValue>
     {
         private struct Entry
         {
@@ -35,11 +35,11 @@ namespace DataStructure
 
         public int Count => count - freeCount;
 
-        public Dictionary() : this(2)
+        public CustomDictionary() : this(2)
         {
         }
 
-        public Dictionary(int capacity)
+        public CustomDictionary(int capacity)
         {
             entries = new Entry[capacity];
             buckets = new int[capacity];

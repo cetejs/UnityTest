@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DataStructure;
+using UnityEngine;
 
 public class MatrixSpaceTest : MonoBehaviour {
     public Transform testGo;
@@ -22,7 +23,7 @@ public class MatrixSpaceTest : MonoBehaviour {
         var pm = MatrixUtil.GetProjectionMatrix(cam);
         var testWorldPos = tm * testGo.localPosition;
         var testLocalPos = om * testGo.position;
-        var testViewPos = vm * new Vector4(testWorldPos, 1);
+        var testViewPos = vm * new CustomVector4(testWorldPos, 1);
         var testClipPos = pm * testViewPos;
         var testScreenPos = MatrixUtil.GetScreenPos(cam, testClipPos);
 
@@ -32,8 +33,8 @@ public class MatrixSpaceTest : MonoBehaviour {
         Debug.Log($"pm: {cam.projectionMatrix}\n{pm}");
         Debug.Log($"testWorldPos: {testGo.position} {testWorldPos}");
         Debug.Log($"testLocalPos: {testGo.localPosition} {testLocalPos}");
-        Debug.Log($"testViewPos: {cam.worldToCameraMatrix * new Vector4(testWorldPos, 1).ToVector4()} {testViewPos}");
-        Debug.Log($"testClipPos: {cam.projectionMatrix * cam.worldToCameraMatrix * new Vector4(testWorldPos, 1).ToVector4()} {testClipPos}");
+        Debug.Log($"testViewPos: {cam.worldToCameraMatrix * new CustomVector4(testWorldPos, 1).ToVector4()} {testViewPos}");
+        Debug.Log($"testClipPos: {cam.projectionMatrix * cam.worldToCameraMatrix * new CustomVector4(testWorldPos, 1).ToVector4()} {testClipPos}");
         Debug.Log($"testClipPos: {cam.WorldToScreenPoint(testWorldPos)} {new Vector3(testScreenPos.x, testScreenPos.y, -testViewPos.z)}");
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DataStructure;
+using UnityEngine;
 
 public class QuaternionEulerTest : MonoBehaviour {
     public AutoRandomRotate target;
@@ -15,10 +16,10 @@ public class QuaternionEulerTest : MonoBehaviour {
     private void OnRotateFinish() {
         switch (eulerType) {
             case EulerType.Euler:
-                transform.rotation = UnityEngine.Quaternion.Euler(target.transform.eulerAngles);
+                transform.rotation = Quaternion.Euler(target.transform.eulerAngles);
                 break;
             case EulerType.CustomEuler:
-                transform.rotation = Quaternion.Euler(target.transform.eulerAngles).ToQuaternion();
+                transform.rotation = CustomQuaternion.Euler(target.transform.eulerAngles).ToQuaternion();
                 break;
         }
     }

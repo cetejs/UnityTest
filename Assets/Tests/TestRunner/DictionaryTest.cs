@@ -9,7 +9,7 @@ namespace Tests
         [Test]
         public void Test()
         {
-            Dictionary<string, string> dict = new Dictionary<string, string>();
+            CustomDictionary<string, string> dict = new CustomDictionary<string, string>();
             for (int i = 0; i < 4; i++)
             {
                 string key = i.ToString();

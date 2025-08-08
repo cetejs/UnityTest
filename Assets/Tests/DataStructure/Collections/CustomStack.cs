@@ -2,7 +2,7 @@ using System;
 
 namespace DataStructure
 {
-    public class Stack<T>
+    public class CustomStack<T>
     {
         private T[] items;
         private int size;
@@ -11,13 +11,13 @@ namespace DataStructure
 
         public int Count => size;
 
-        public Stack()
+        public CustomStack()
         {
             items = EmptyArray;
             size = 0;
         }
 
-        public Stack(int capacity)
+        public CustomStack(int capacity)
         {
             items = new T[capacity];
             size = 0;

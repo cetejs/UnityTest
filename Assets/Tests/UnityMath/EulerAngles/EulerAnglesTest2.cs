@@ -18,9 +18,9 @@ public class EulerAnglesTest2 : MonoBehaviour {
     // 限制到 [-180, 180] => warpPi(x) = x - 360[(x + 180)/360]
     private void Update() {
         if (Input.GetKey(KeyCode.X) && Input.GetKey(KeyCode.LeftShift)) {
-            transform.RotateAround(transform.position, UnityEngine.Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right, -angleSpeed * Time.deltaTime);
+            transform.RotateAround(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right, -angleSpeed * Time.deltaTime);
         } else if (Input.GetKey(KeyCode.X)) {
-            transform.RotateAround(transform.position, UnityEngine.Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right, angleSpeed * Time.deltaTime);
+            transform.RotateAround(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right, angleSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.Y) && Input.GetKey(KeyCode.LeftShift)) {
@@ -30,9 +30,9 @@ public class EulerAnglesTest2 : MonoBehaviour {
         }
 
         if (Input.GetKey(KeyCode.Z) && Input.GetKey(KeyCode.LeftShift)) {
-            transform.RotateAround(transform.position, UnityEngine.Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward, -angleSpeed * Time.deltaTime);
+            transform.RotateAround(transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward, -angleSpeed * Time.deltaTime);
         } else if (Input.GetKey(KeyCode.Z)) {
-            transform.RotateAround(transform.position, UnityEngine.Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward, angleSpeed * Time.deltaTime);
+            transform.RotateAround(transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward, angleSpeed * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -48,12 +48,12 @@ public class EulerAnglesTest2 : MonoBehaviour {
         
         // x 轴受到 y 轴的影响, 所以需要加上 y 轴旋转
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + UnityEngine.Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right);
+        Gizmos.DrawLine(transform.position, transform.position + Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right);
         Gizmos.color = Color.white;
         
         // z 轴受到 x 、y 轴的影响, 所以需要加上 x、y 轴旋转
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + UnityEngine.Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward);
+        Gizmos.DrawLine(transform.position, transform.position + Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward);
         Gizmos.color = Color.white;
     }
 
