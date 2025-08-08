@@ -48,7 +48,7 @@ namespace Algorithm
             {
                 for (int j = 0; j < nodes.GetLength(1); j++)
                 {
-                    nodes[i, j].Obstacle = Physics.CheckBox(OffsetToPos(nodes[i, j].Pos), Vector3.one * (nodeSize - 0.1f) / 2f, Quaternion.identity, obstacleMask);
+                    nodes[i, j].Obstacle = Physics.CheckBox(OffsetToPos(nodes[i, j].Pos), Vector3.one * (nodeSize - 0.1f) / 2f, UnityEngine.Quaternion.identity, obstacleMask);
                 }
             }
         }

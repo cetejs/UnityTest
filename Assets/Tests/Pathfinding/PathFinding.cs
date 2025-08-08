@@ -40,7 +40,7 @@ namespace Algorithm
                     float y = j * nodeSize - gridSize.y / 2f + nodeSize / 2f;
                     Vector3 pos = transform.position + new Vector3(x, 0, y);
 
-                    if (Physics.CheckBox(pos, Vector3.one * (nodeSize - 0.1f) / 2f, Quaternion.identity, obstacleMask))
+                    if (Physics.CheckBox(pos, Vector3.one * (nodeSize - 0.1f) / 2f, UnityEngine.Quaternion.identity, obstacleMask))
                     {
                         Gizmos.color = Color.red;
                     }

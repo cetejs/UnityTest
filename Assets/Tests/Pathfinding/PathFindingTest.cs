@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Algorithm
 {
-    public class PathFindingSample : MonoBehaviour
+    public class PathFindingTest : MonoBehaviour
     {
         [SerializeField]
         private PathFinding pathFinding;
@@ -61,7 +61,7 @@ namespace Algorithm
                 {
                     Vector3 direction = offset.normalized;
                     transform.position += direction * speed;
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), angleSpeed * Time.deltaTime);
+                    transform.rotation = UnityEngine.Quaternion.RotateTowards(transform.rotation, UnityEngine.Quaternion.LookRotation(direction), angleSpeed * Time.deltaTime);
                 }
             }
         }
