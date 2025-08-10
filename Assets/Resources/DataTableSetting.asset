@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5e351ed19f4de19ce660cda74406bb, type: 3}
   m_Name: DataTableSetting
   m_EditorClassIdentifier: 
-  RootPath: F:\Unity\Project\UnityTest
+  RootPath: D:\Unity\Project\UnityTest
   ExcelRootPath: RawTables
-  TableBuildPath: Assets/Configs/Tables
-  ScriptBuildPath: Assets/Scripts/Tables
-  CharacterSetBuildPath: Assets/CharacterSet
-  ScriptNamespace: GameFramework
+  TableBuildPath: Assets/Tests/DataTable/Configs
+  ScriptBuildPath: Assets/Tests/DataTable/Scripts
+  CharacterSetBuildPath: Assets/Tests/DataTable/CharacterSet
+  ScriptNamespace: 
   LocalizationName: Localization
   ExportCommonCharacterSet: 1
   UseCrypto: 0

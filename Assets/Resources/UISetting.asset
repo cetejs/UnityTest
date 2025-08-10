@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6c4ffdc0664ea29b31df3a7226e9a5, type: 3}
   m_Name: UISetting
   m_EditorClassIdentifier: 
-  WindowPath: Assets/Prefabs/Windows
+  WindowPath: Windows
   CanvasSettings:
+    ReferenceResolution: {x: 1920, y: 1080}
     ScaleMode: 1
     ScreenMatchMode: 0
     Match: 0
-    ReferenceResolution: {x: 1920, y: 1080}
   WindowLayers:
   - Name: FullScreen
     Sort: 0
@@ -27,4 +27,5 @@ MonoBehaviour:
     Sort: 2000
   - Name: Top
     Sort: 3000
-  ControllerPresetManager: {fileID: 0}
+  ControllerPresetManager: {fileID: 11400000, guid: 4bfaaca8ff00d6c40a1e3da90904c180,
+    type: 2}

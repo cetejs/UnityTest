@@ -1,0 +1,19 @@
+/* AutoGenerate */
+
+using System.IO;
+using GameFramework;
+
+public class #Name# : IDataTable
+{
+    #Field#
+
+    public void Read(BinaryReader reader)
+    {
+        #FieldSet#
+    }
+
+    public override string ToString()
+    {
+        return $"#ToString#";
+    }
+}

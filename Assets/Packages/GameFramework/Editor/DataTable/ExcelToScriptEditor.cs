@@ -15,7 +15,8 @@ namespace GameFramework
             StringBuilder toStringBuilder = new StringBuilder();
 
             DataTableSetting setting = DataTableSetting.Instance;
-            string tempTextPath = string.Concat(EditorPathUtility.GetPackageFullPath(), "/Editor/DataTable/TemplateTable.txt");
+            string templateTable = string.IsNullOrEmpty(setting.ScriptNamespace) ? "TemplateTableWithoutNamespace" : "TemplateTable";
+            string tempTextPath = string.Concat(EditorPathUtility.GetPackageFullPath(), "/Editor/DataTable/", templateTable, ".txt");
             string tempTableText = File.ReadAllText(tempTextPath).ReplaceNewline();
             DataRow fieldRow = dataTable.Rows[0];
             // DataRow desRow = dataTable.Rows[1];

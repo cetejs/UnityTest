@@ -20,7 +20,8 @@ namespace GameFramework
         public string HotkeyId { get; private set; }
         public string HotkeyLabel { get; private set; }
 
-        public bool ReadyToClear { get; set; }
+        public int RegisterCount { get; set; }
+        public bool ReadyToClear => RegisterCount <= 0;
 
         private void Awake()
         {
@@ -43,7 +44,6 @@ namespace GameFramework
             Localization.OnLanguageChanged += OnLanguageChanged;
             imageParent.SetActiveSafe(false);
             textParent.SetActiveSafe(false);
-            ReadyToClear = false;
             LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
         }
 

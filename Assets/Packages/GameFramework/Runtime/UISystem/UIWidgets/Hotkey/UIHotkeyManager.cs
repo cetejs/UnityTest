@@ -10,12 +10,10 @@ namespace GameFramework
         private UIHotkeyDisplay prefab;
         private List<UIHotkeyDisplay> hotkeys = new List<UIHotkeyDisplay>();
         private ObjectPool<UIHotkeyDisplay> pool;
-        private RectTransform rectTransform;
 
         private void Awake()
         {
             pool = new ObjectPool<UIHotkeyDisplay>(prefab, transform);
-            rectTransform = transform as RectTransform;
         }
 
         private void OnEnable()
@@ -48,13 +46,14 @@ namespace GameFramework
             {
                 if (hotkey.HotkeyId == data.Item1 && hotkey.HotkeyLabel == data.Item2)
                 {
-                    hotkey.ReadyToClear = false;
+                    hotkey.RegisterCount++;
                     return;
                 }
             }
 
             UIHotkeyDisplay newHotkey = pool.Get(transform);
             newHotkey.SetData(data.Item1, data.Item2);
+            newHotkey.RegisterCount++;
             hotkeys.Add(newHotkey);
         }
 
@@ -64,7 +63,7 @@ namespace GameFramework
             {
                 if (hotkey.HotkeyId == data.Item1 && hotkey.HotkeyLabel == data.Item2)
                 {
-                    hotkey.ReadyToClear = true;
+                    hotkey.RegisterCount--;
                     return;
                 }
             }
