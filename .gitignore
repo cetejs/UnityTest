@@ -101,3 +101,4 @@ InitTestScene*.unity*
 # Custom
 .idea/
 Exe/
+Assets/StreamingAssets/
