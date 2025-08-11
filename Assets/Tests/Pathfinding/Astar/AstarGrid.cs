@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Algorithm
+namespace Tests
 {
     internal class AstarGrid : IPathGrid
     {

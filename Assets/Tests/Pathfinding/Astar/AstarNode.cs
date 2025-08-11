@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Algorithm
+namespace Tests
 {
     public class AstarNode : IComparable<AstarNode>
     {

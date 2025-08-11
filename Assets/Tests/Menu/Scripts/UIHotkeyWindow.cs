@@ -1,6 +1,6 @@
 using GameFramework;
 
-namespace RougeSouls
+namespace Tests
 {
     public class UIHotkeyWindow : UIWindow
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameFramework;
 using UnityEngine;
 
-namespace RougeSouls
+namespace Tests
 {
     public class UIMenuWindow : UIWindow
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Algorithm
+namespace Tests
 {
     public class PathFindingTest : MonoBehaviour
     {

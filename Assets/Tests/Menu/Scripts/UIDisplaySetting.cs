@@ -3,7 +3,7 @@ using GameFramework;
 using TMPro;
 using UnityEngine;
 
-namespace RougeSouls
+namespace Tests
 {
     public class UIDisplaySetting : MonoBehaviour
     {

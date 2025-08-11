@@ -17,7 +17,7 @@ MonoBehaviour:
   TableBuildPath: Assets/Tests/DataTable/Configs
   ScriptBuildPath: Assets/Tests/DataTable/Scripts
   CharacterSetBuildPath: Assets/Tests/DataTable/CharacterSet
-  ScriptNamespace: 
+  ScriptNamespace: Tests
   LocalizationName: Localization
   ExportCommonCharacterSet: 1
   UseCrypto: 0
