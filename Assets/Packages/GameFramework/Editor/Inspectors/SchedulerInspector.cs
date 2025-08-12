@@ -2,7 +2,7 @@
 
 namespace GameFramework
 {
-    [CustomEditor(typeof(Scheduler))]
+    [CustomEditor(typeof(DelayManager))]
     internal class SchedulerInspector : ManagerInfoInspector
     {
     }

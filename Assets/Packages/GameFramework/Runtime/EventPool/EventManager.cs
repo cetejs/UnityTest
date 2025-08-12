@@ -11,49 +11,49 @@ namespace GameFramework
             eventPool.Update();
         }
 
-        public void Register(int id, Action handler)
+        public static void Register(int id, Action handler)
         {
             Instance?.eventPool.Register(id, handler);
         }
 
-        public void Register<T>(int id, Action<T> handler) where T : IGenericData
+        public static void Register<T>(int id, Action<T> handler) where T : IGenericData
         {
             Instance?.eventPool.Register(id, handler);
         }
 
-        public void Unregister(int id, Action handler)
+        public static void Unregister(int id, Action handler)
         {
             Instance?.eventPool.Unregister(id, handler);
         }
 
-        public void Unregister<T>(int id, Action<T> handler) where T : IGenericData
+        public static void Unregister<T>(int id, Action<T> handler) where T : IGenericData
         {
             Instance?.eventPool.Unregister(id, handler);
         }
 
-        public void Send(int id)
+        public static void Send(int id)
         {
             Instance?.eventPool.Send(id);
         }
 
-        public void Send<T>(int id, T data) where T : IGenericData
+        public static void Send<T>(int id, T data) where T : IGenericData
         {
             Instance?.eventPool.Send(id, data);
         }
 
-        public void SendAsync(int id)
+        public static void SendAsync(int id)
         {
             Instance?.eventPool.SendAsync(id);
         }
 
-        public void SendAsync<T>(int id, T data) where T : IGenericData
+        public static void SendAsync<T>(int id, T data) where T : IGenericData
         {
             Instance?.eventPool.SendAsync(id, data);
         }
 
-        public void Clear()
+        public static void Clear()
         {
-            eventPool.Clear();
+            Instance?.eventPool.Clear();
         }
     }
 }

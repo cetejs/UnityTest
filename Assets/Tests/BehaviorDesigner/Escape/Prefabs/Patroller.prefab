@@ -1,0 +1,1233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1134661062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134661063}
+  - component: {fileID: 1134661066}
+  - component: {fileID: 1134661065}
+  - component: {fileID: 1134661064}
+  m_Layer: 0
+  m_Name: SeeIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134661063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134661062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6448755480362348835}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1134661066
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134661062}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1134661065
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134661062}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5b56b42f98fe7b1478353f329339dbfe, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1134661064
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134661062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1415899019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415899020}
+  - component: {fileID: 1415899023}
+  - component: {fileID: 1415899022}
+  - component: {fileID: 1415899021}
+  m_Layer: 0
+  m_Name: HearIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415899020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415899019}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6448755480362348835}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!33 &1415899023
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415899019}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1415899022
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415899019}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: d67759b3478d8f24aa9e9440dad7d6e7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1415899021
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415899019}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &4234484407022974332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4234484407022974333}
+  m_Layer: 0
+  m_Name: 04
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4234484407022974333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234484407022974332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4234484407390655002}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4234484407248725288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4234484407248725289}
+  m_Layer: 0
+  m_Name: 03
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4234484407248725289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234484407248725288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4234484407390655002}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4234484407296855821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4234484407296855818}
+  m_Layer: 0
+  m_Name: 02
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4234484407296855818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234484407296855821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4234484407390655002}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4234484407390655005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4234484407390655002}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4234484407390655002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234484407390655005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4234484408500981906}
+  - {fileID: 4234484407296855818}
+  - {fileID: 4234484407248725289}
+  - {fileID: 4234484407022974333}
+  m_Father: {fileID: 7187038927268894225}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4234484408500981909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4234484408500981906}
+  m_Layer: 0
+  m_Name: 01
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4234484408500981906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234484408500981909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4234484407390655002}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6448755480362348890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6448755480362348835}
+  - component: {fileID: 6448755480362348834}
+  - component: {fileID: 3075441042714973890}
+  - component: {fileID: 84211215}
+  - component: {fileID: 84211216}
+  m_Layer: 6
+  m_Name: Performer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6448755480362348835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448755480362348890}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7187038926103368650}
+  - {fileID: 1134661063}
+  - {fileID: 1415899020}
+  m_Father: {fileID: 7187038927268894225}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &6448755480362348834
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448755480362348890}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.66842794
+  m_Speed: 3.5
+  m_Acceleration: 15
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.000002
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3075441042714973890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448755480362348890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06eb425bab9748e88ea4b01a8c1daebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  restartWhenComplete: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  source:
+    behaviorName: Behavior
+    behaviorDescription: 
+    serializedVersion: 153
+    root:
+      rid: 5920605618680365056
+    tasks:
+    - rid: 5920605618680365056
+    - rid: 5920605618680365057
+    - rid: 5920605618680365058
+    - rid: 5920605618680365067
+    - rid: 5920605618680365068
+    - rid: 5920605618680365069
+    - rid: 5920605618680365070
+    - rid: 5920605618680365071
+    - rid: 5920605618680365075
+    - rid: 5920605618680365076
+    - rid: 5920605634532999170
+    - rid: 5920605634532999171
+    - rid: 5920605634532999172
+    - rid: 5920605634532999174
+    - rid: 5920605634532999175
+    - rid: 5920605634532999176
+    - rid: 5920605634532999177
+    - rid: 5920605634532999178
+    - rid: 5920605634532999179
+    - rid: 5920605634532999180
+    - rid: 5920605634532999181
+    sharedVariables:
+    - rid: 5920605618680365059
+    - rid: 5920605618680365060
+    - rid: 5920605618680365061
+    - rid: 5920605618680365062
+    - rid: 5920605618680365063
+    - rid: 5920605618680365064
+    - rid: 5920605618680365065
+    - rid: 5920605634532999168
+    - rid: 5920605634532999169
+    - rid: 5920605634532999173
+  references:
+    version: 2
+    RefIds:
+    - rid: 5920605618680365056
+      type: {class: Root, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Root
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 400
+          y: 300
+          width: 100
+          height: 100
+        guid: 176203b6-84e8-4151-a0ea-4c596cdb64b0
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605618680365057
+    - rid: 5920605618680365057
+      type: {class: Parallel, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Parallel
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 400
+          y: 472
+          width: 150
+          height: 130
+        guid: e8d3a110-c3b2-4d73-954f-c6956ccccd57
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605618680365058
+        - rid: 5920605634532999170
+        - rid: 5920605634532999171
+        abortType: 0
+    - rid: 5920605618680365058
+      type: {class: BindIndicator, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Bind Indicator
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 160
+          y: 667
+          width: 150
+          height: 106
+        guid: 31b1edd7-bb73-42c8-8cb6-62fb03c10d7c
+        disabled: 0
+        breakpoint: 0
+        fieldOfView:
+          name: SeeFOV
+          isShared: 1
+          value: 0
+        viewDistance:
+          name: SeeDis
+          isShared: 1
+          value: 0
+        viewOffset:
+          name: SeeOffset
+          isShared: 1
+          value: {x: 0, y: 0, z: 0}
+        hearDistance:
+          name: HearDis
+          isShared: 1
+          value: 0
+        seeIndicator: {fileID: 1134661065}
+        hearIndicator: {fileID: 1415899022}
+    - rid: 5920605618680365059
+      type: {class: SharedTransform, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: SeeObj
+        isShared: 0
+        value: {fileID: 0}
+    - rid: 5920605618680365060
+      type: {class: SharedFloat, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: SeeFOV
+        isShared: 0
+        value: 60
+    - rid: 5920605618680365061
+      type: {class: SharedFloat, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: SeeDis
+        isShared: 0
+        value: 10
+    - rid: 5920605618680365062
+      type: {class: SharedVector3, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: SeeOffset
+        isShared: 0
+        value: {x: 0, y: 0.5, z: 0}
+    - rid: 5920605618680365063
+      type: {class: SharedTransform, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: HearObj
+        isShared: 0
+        value: {fileID: 0}
+    - rid: 5920605618680365064
+      type: {class: SharedFloat, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: HearDis
+        isShared: 0
+        value: 10
+    - rid: 5920605618680365065
+      type: {class: SharedTransform, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: LookObj
+        isShared: 0
+        value: {fileID: 0}
+    - rid: 5920605618680365067
+      type: {class: Selector, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Selector
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: -277
+          y: 1081
+          width: 150
+          height: 130
+        guid: b6efdae9-ce03-4394-abe2-0d5c0ee7664c
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605618680365068
+        - rid: 5920605618680365069
+        - rid: 5920605634532999172
+        abortType: 2
+    - rid: 5920605618680365068
+      type: {class: CanSeeObject, ns: BehaviorDesigner.Tasks.Movement, asm: Assembly-CSharp}
+      data:
+        name: Can See Object
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: -466
+          y: 1252
+          width: 150
+          height: 106
+        guid: 445aed96-5e10-4c63-bb51-17c13eb0fbfa
+        disabled: 0
+        breakpoint: 0
+        interval:
+          name: 
+          isShared: 0
+          value: 1
+        optimization: 0
+        tag:
+          name: 
+          isShared: 0
+          value:
+            value: Player
+        objectLayerMask:
+          name: 
+          isShared: 0
+          value:
+            serializedVersion: 2
+            m_Bits: 64
+        obstacleLayerMask:
+          name: 
+          isShared: 0
+          value:
+            serializedVersion: 2
+            m_Bits: 257
+        fieldOfView:
+          name: SeeFOV
+          isShared: 1
+          value: 60
+        viewDistance:
+          name: SeeDis
+          isShared: 1
+          value: 10
+        viewVolume:
+          name: 
+          isShared: 0
+          value: 1
+        angleOffset:
+          name: 
+          isShared: 0
+          value: 0
+        viewOffset:
+          name: SeeOffset
+          isShared: 1
+          value: {x: 0, y: 0, z: 0}
+        storeResult:
+          name: SeeObj
+          isShared: 1
+          value: {fileID: 0}
+        drawGizmos: 1
+        viewColor: {r: 1, g: 0.92, b: 0.016, a: 0.1}
+    - rid: 5920605618680365069
+      type: {class: CanHearObject, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Can Hear Object
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: -277
+          y: 1252
+          width: 150
+          height: 106
+        guid: 87965253-c728-460d-b169-cb25be3cd95e
+        disabled: 0
+        breakpoint: 0
+        interval:
+          name: 
+          isShared: 0
+          value: 1
+        listeningTag:
+          name: 
+          isShared: 0
+          value:
+            value: Player
+        hearRadius:
+          name: HearDis
+          isShared: 1
+          value: 10
+        hearSpeed:
+          name: 
+          isShared: 0
+          value: 4
+        storeResult:
+          name: HearObj
+          isShared: 1
+          value: {fileID: 0}
+        drawGizmos: 1
+        viewColor: {r: 1, g: 0.92, b: 0.016, a: 0.1}
+    - rid: 5920605618680365070
+      type: {class: Sequence, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Sequence
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 221
+          y: 869
+          width: 150
+          height: 130
+        guid: debdfc68-3627-4609-87f3-cf42142a03c7
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605618680365067
+        - rid: 5920605618680365071
+        - rid: 5920605634532999174
+        - rid: 5920605634532999175
+        - rid: 5920605634532999176
+        - rid: 5920605634532999177
+        abortType: 2
+    - rid: 5920605618680365071
+      type: {class: ReplaceMaterial, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Replace Material
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: -43
+          y: 1074
+          width: 150
+          height: 106
+        guid: e2b21a8e-dea5-42c3-93ab-554cb0fd10b3
+        disabled: 0
+        breakpoint: 0
+        renderer: {fileID: 7187038926105661738}
+        material: {fileID: 2100000, guid: 662f93a55270c7f438598dd406c128bb, type: 2}
+    - rid: 5920605618680365075
+      type: {class: Sequence, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Sequence
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 1054
+          y: 869
+          width: 150
+          height: 130
+        guid: 342d6499-3704-4bfb-bae5-c6988e3e3a07
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605618680365076
+        - rid: 5920605634532999178
+        - rid: 5920605634532999181
+        abortType: 0
+    - rid: 5920605618680365076
+      type: {class: ReplaceMaterial, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Replace Material
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 860
+          y: 1074
+          width: 150
+          height: 106
+        guid: e39ea059-021f-4b6f-99d9-ccf3d587a1a8
+        disabled: 0
+        breakpoint: 0
+        renderer: {fileID: 7187038926105661738}
+        material: {fileID: 2100000, guid: 92f78b0851ab37f409990aa746a52ec9, type: 2}
+    - rid: 5920605634532999168
+      type: {class: SharedFloat, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: AlarmRadius
+        isShared: 0
+        value: 0
+    - rid: 5920605634532999169
+      type: {class: SharedTransform, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Warnner
+        isShared: 0
+        value: {fileID: 0}
+    - rid: 5920605634532999170
+      type: {class: ReceiveAlarmEvent, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Receive Alarm Event
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 400
+          y: 667
+          width: 150
+          height: 106
+        guid: 8ed4b8fd-8d7d-4dc8-83c4-95dbf88be113
+        disabled: 0
+        breakpoint: 0
+        eventId: 1
+        radius:
+          name: AlarmRadius
+          isShared: 1
+          value: 0
+        warner:
+          name: Warnner
+          isShared: 1
+          value: {fileID: 0}
+    - rid: 5920605634532999171
+      type: {class: Selector, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Selector
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 650
+          y: 667
+          width: 150
+          height: 130
+        guid: b80dbc7d-60d5-4e6f-9e54-971d411e83af
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605618680365070
+        - rid: 5920605618680365075
+        abortType: 0
+    - rid: 5920605634532999172
+      type: {class: CanHearAlarm, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Can Hear Alarm
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: -84
+          y: 1252
+          width: 150
+          height: 106
+        guid: 3ed32c75-c489-44f3-9716-006fd242b193
+        disabled: 0
+        breakpoint: 0
+        interval:
+          name: 
+          isShared: 0
+          value: 1
+        radius:
+          name: AlarmRadius
+          isShared: 1
+          value: 0
+        warner:
+          name: Warnner
+          isShared: 1
+          value: {fileID: 0}
+        storeResult:
+          name: AlarmObj
+          isShared: 1
+          value: {fileID: 0}
+    - rid: 5920605634532999173
+      type: {class: SharedTransform, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: AlarmObj
+        isShared: 0
+        value: {fileID: 0}
+    - rid: 5920605634532999174
+      type: {class: StoreTarget, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Store Target
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 132
+          y: 1074
+          width: 150
+          height: 106
+        guid: 50436a47-a8d2-41fa-b081-6a74b11e9ad7
+        disabled: 0
+        breakpoint: 0
+        target1:
+          name: SeeObj
+          isShared: 1
+          value: {fileID: 0}
+        target2:
+          name: HearObj
+          isShared: 1
+          value: {fileID: 0}
+        target3:
+          name: AlarmObj
+          isShared: 1
+          value: {fileID: 0}
+        storeResult:
+          name: SeeObj
+          isShared: 1
+          value: {fileID: 0}
+    - rid: 5920605634532999175
+      type: {class: Seek, ns: BehaviorDesigner.Tasks.Movement, asm: Assembly-CSharp}
+      data:
+        name: Seek
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 312
+          y: 1074
+          width: 150
+          height: 106
+        guid: aefe3c79-86bb-4f6e-bfe6-438c81528b40
+        disabled: 0
+        breakpoint: 0
+        speed:
+          name: 
+          isShared: 0
+          value: 6
+        angularSpeed:
+          name: 
+          isShared: 0
+          value: 180
+        arriveDistance:
+          name: 
+          isShared: 0
+          value: 1.5
+        stopOnTaskEnd:
+          name: 
+          isShared: 0
+          value: 1
+        updateRotation:
+          name: 
+          isShared: 0
+          value: 1
+        target:
+          name: SeeObj
+          isShared: 1
+          value: {fileID: 0}
+        targetPosition:
+          name: 
+          isShared: 0
+          value: {x: 0, y: 0, z: 0}
+    - rid: 5920605634532999176
+      type: {class: StopNavPath, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Stop Nav Path
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 485
+          y: 1074
+          width: 150
+          height: 106
+        guid: 1f0f9cc0-ab44-4ab8-93e3-6a693426f46b
+        disabled: 0
+        breakpoint: 0
+        agent: {fileID: 6448755480362348834}
+    - rid: 5920605634532999177
+      type: {class: SendEvent, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Send Event
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 665
+          y: 1074
+          width: 150
+          height: 106
+        guid: 3025faec-3b74-410a-ace2-fac1a06118e5
+        disabled: 0
+        breakpoint: 0
+        eventId: 2
+    - rid: 5920605634532999178
+      type: {class: Parallel, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Parallel
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 1054
+          y: 1074
+          width: 150
+          height: 130
+        guid: a3d314ca-f8dc-4f1e-999a-6d6f0aa3dbd8
+        disabled: 0
+        breakpoint: 0
+        collapsed: 0
+        children:
+        - rid: 5920605634532999179
+        - rid: 5920605634532999180
+        abortType: 0
+    - rid: 5920605634532999179
+      type: {class: Wait, ns: BehaviorDesigner, asm: BehaviorDesigner}
+      data:
+        name: Wait
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 957
+          y: 1245
+          width: 150
+          height: 106
+        guid: aefcdd8c-36c3-44f9-bc30-0bff3c471a9d
+        disabled: 0
+        breakpoint: 0
+        waitTime:
+          name: 
+          isShared: 0
+          value: 1
+        isRandomWait:
+          name: 
+          isShared: 0
+          value: 0
+        randomRange:
+          name: 
+          isShared: 0
+          value: {x: 0, y: 1}
+    - rid: 5920605634532999180
+      type: {class: StopNavPath, ns: Escape, asm: Assembly-CSharp}
+      data:
+        name: Stop Nav Path
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 1142
+          y: 1245
+          width: 150
+          height: 106
+        guid: bd147963-307b-4708-8394-6c2b37c7f3b5
+        disabled: 0
+        breakpoint: 0
+        agent: {fileID: 6448755480362348834}
+    - rid: 5920605634532999181
+      type: {class: Patrol, ns: BehaviorDesigner.Tasks.Movement, asm: Assembly-CSharp}
+      data:
+        name: Patrol
+        comment: 
+        graphPosition:
+          serializedVersion: 2
+          x: 1249
+          y: 1074
+          width: 150
+          height: 106
+        guid: 9bb42da6-b197-4c0b-9ba1-ea03f5360b4f
+        disabled: 0
+        breakpoint: 0
+        speed:
+          name: 
+          isShared: 0
+          value: 5
+        angularSpeed:
+          name: 
+          isShared: 0
+          value: 120
+        arriveDistance:
+          name: 
+          isShared: 0
+          value: 0.1
+        stopOnTaskEnd:
+          name: 
+          isShared: 0
+          value: 1
+        updateRotation:
+          name: 
+          isShared: 0
+          value: 1
+        randomPatrol:
+          name: 
+          isShared: 0
+          value: 0
+        reversePatrol:
+          name: 
+          isShared: 0
+          value: 0
+        findNearestWaypoint:
+          name: 
+          isShared: 0
+          value: 1
+        waypointPauseDuration:
+          name: 
+          isShared: 0
+          value: 0.5
+        waypoints:
+          name: 
+          isShared: 0
+          value:
+          - {fileID: 4234484408500981906}
+          - {fileID: 4234484407296855818}
+          - {fileID: 4234484407248725289}
+          - {fileID: 4234484407022974333}
+--- !u!114 &84211215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448755480362348890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61773778297ed6a45bd5fd6fb932bef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  birthPosition: {x: 0, y: 0, z: 0}
+  birthRotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &84211216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448755480362348890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d221f871efeac0045a66af4fa630b8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behavior: {fileID: 0}
+--- !u!1 &7187038926103400426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7187038926103368650}
+  - component: {fileID: 7187038926106760170}
+  - component: {fileID: 7187038926105661738}
+  m_Layer: 6
+  m_Name: TriangleBot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7187038926103368650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187038926103400426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6448755480362348835}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7187038926106760170
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187038926103400426}
+  m_Mesh: {fileID: 4300000, guid: 55e5ab7e66bd2eb49bc96935fe0bd04a, type: 3}
+--- !u!23 &7187038926105661738
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187038926103400426}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 92f78b0851ab37f409990aa746a52ec9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7187038927268894312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7187038927268894225}
+  m_Layer: 0
+  m_Name: Patroller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7187038927268894225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187038927268894312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6448755480362348835}
+  - {fileID: 4234484407390655002}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

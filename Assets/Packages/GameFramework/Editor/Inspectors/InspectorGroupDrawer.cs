@@ -26,6 +26,11 @@ namespace GameFramework
 
         private void CollectGroupData()
         {
+            if (serializedObject.targetObject == null)
+            {
+                return;
+            }
+
             groupDataMap.Clear();
             properties.Clear();
             abilityDrawerMap.Clear();

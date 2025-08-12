@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameFramework
 {
-    public partial class Scheduler
+    public partial class DelayManager
     {
         private struct DelegateInfo : IComparable<DelegateInfo>
         {
