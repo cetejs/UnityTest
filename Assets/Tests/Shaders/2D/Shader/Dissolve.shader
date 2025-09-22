@@ -12,55 +12,65 @@
     
     SubShader
     {
-        Tags { "Queue" = "Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags
+        {
+            "RenderPipeline" = "UniversalRenderPipeline"
+            "Queue" = "Transparent"
+        }
         
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
+            Blend SrcAlpha OneMinusSrcAlpha
 
-            sampler2D _MainTex;
+            HLSLPROGRAM
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
+            
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+            TEXTURE2D(_DissolveTex);
+            SAMPLER(sampler_DissolveTex);
+
+            CBUFFER_START(UnityPreMaterial)
             float4 _MainTex_ST;
-            sampler2D _DissolveTex;
             float _DissolveAmount;
             float4 _EdgeColor;
             float _EdgeWidth;
+            CBUFFER_END
 
-            struct appdata
+            struct Attributes
             {
-                float4 vertex : POSITION;
+                float4 positionOS : POSITION;
+                float2 texcoord : TEXCOORD0;
+            };
+
+            struct Varyings
+            {
+                float4 positionCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct v2f
+            Varyings MainVertex(Attributes input)
             {
-                float4 pos : SV_POSITION;
-                float2 uv : TEXCOORD0;
-            };
-
-            v2f vert(appdata v)
-            {
-                v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                return o;
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
+                return output;
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
-                fixed4 dissolve = tex2D(_DissolveTex, i.uv).r; // 采样噪声贴图
+                half4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uv);
+                half dissolve = SAMPLE_TEXTURE2D(_DissolveTex, sampler_DissolveTex, input.uv).r; // 采样噪声贴图
                 float edge = smoothstep(_DissolveAmount, _DissolveAmount + _EdgeWidth, dissolve); // 计算边缘效果 smoothstep(a, b, x)， x = [a, b] => [0, 1]
                 float alpha = step(_DissolveAmount, dissolve); // 判断是否在消失范围内 step(a, b) b >= a ? 1 : 0
                 col.a *= alpha;
-                col.rgb = lerp(_EdgeColor, col.rgb, edge);
+                col.rgb = lerp(_EdgeColor.rgb, col.rgb, edge);
                 return col;
             }
-            
-            ENDCG
+            ENDHLSL
         }
     }
 }

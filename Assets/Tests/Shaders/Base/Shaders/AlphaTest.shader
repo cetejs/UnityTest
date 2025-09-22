@@ -1,4 +1,4 @@
-﻿Shader "Custom/URP/AlphaTest"
+﻿Shader "Custom/BlinnPhong"
 {
     Properties
     {
@@ -11,75 +11,70 @@
     {
         Tags
         {
+            "RenderType" = "TransparentCutoff"
             "RenderPipeline" = "UniversalRenderPipeline"
             "Queue" = "AlphaTest"
             "IgnoreProjector" = "True"
-            "RenderType" = "TransparentCutoff"
         }
 
         Pass
         {
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             TEXTURE2D(_MainTex);
             SAMPLER(sampler_MainTex);
+
             CBUFFER_START(UnityPreMaterial)
             half4 _Color;
             float4 _MainTex_ST;
             half _Cutoff;
             CBUFFER_END
 
-            struct a2v
+            struct Attributes
             {
-                float4 vertex : POSITION;
-                float3 normal : NORMAL;
+                float4 positionOS : POSITION;
+                float3 normalOS : NORMAL;
                 float4 texcoord : TEXCOORD0;
             };
 
-            struct v2f
+            struct Varyings
             {
-                float4 pos : SV_POSITION;
-                float3 worldNormal : TEXCOORD0;
+                float4 positionCS : SV_POSITION;
+                float3 normalWS : TEXCOORD0;
                 float2 uv : TEXCOORD1;
             };
 
-            v2f vert(a2v v)
+            Varyings MainVertex(Attributes input)
             {
-                v2f o;
-                o.pos = TransformObjectToHClip(v.vertex.xyz);
-                o.worldNormal = TransformObjectToWorldNormal(v.normal);
-                o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
-                return o;
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+                output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
+                return output;
             }
 
-            half4 frag(v2f i) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
                 Light light = GetMainLight();
-                half3 worldNormal = normalize(i.worldNormal);
-                half3 worldLightDir = normalize(TransformObjectToWorldDir(light.direction));
+                half3 normalWS = normalize(input.normalWS);
+                half3 lightDir = normalize(light.direction);
 
-                half4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
+                half4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uv);
                 clip(texColor.a - _Cutoff);
-                // if (texColor.a < _Cutoff)
-                // {
-                //     discard;
-                // }
 
                 half3 albedo = texColor.rgb * _Color.rgb;
 
                 half3 ambient = _GlossyEnvironmentColor.rgb * albedo;
 
-                half3 diffuse = light.color.rgb * saturate(dot(worldLightDir, worldNormal)) * albedo;
+                half3 diffuse = light.color.rgb * saturate(dot(lightDir, normalWS)) * albedo;
                 return half4(ambient + diffuse, 1);
             }
             ENDHLSL
         }
     }
-    
-    FallBack "UniversalRenderPipeline/Lit"
 }

@@ -14,7 +14,7 @@ Shader "Custom/URP/SampleLit"
     {
         Tags
         {
-            "RenderType" = "Opaque" "RenderType" = "UniversalPipeline"
+            "RenderType" = "Opaque"
         }
 
         Pass

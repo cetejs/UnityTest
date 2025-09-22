@@ -9,59 +9,68 @@ Shader "Custom/2D/InnerOutline"
     }
     SubShader
     {
-        Tags { "Queue" = "Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags
+        {
+            "RenderPipeline" = "UniversalRenderPipeline"
+            "Queue" = "Transparent"
+        }
 
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
+            Blend SrcAlpha OneMinusSrcAlpha
+
+            HLSLPROGRAM
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
+            
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             sampler2D _MainTex;
+
+            CBUFFER_START(UnityPreMaterial)
             float4 _MainTex_ST;
             float4 _MainTex_TexelSize;
             float4 _OutlineColor;
             float _OutlineThickness;
             float _OutlineAlpha;
+            CBUFFER_END
 
-            struct appdata
+            struct Attributes
             {
-                float4 vertex : POSITION;
+                float4 positionOS : POSITION;
+                float2 texcoord : TEXCOORD0;
+            };
+
+            struct Varyings
+            {
+                float4 positionCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct v2f
-            {
-                float4 pos : SV_POSITION;
-                float2 uv : TEXCOORD0;
-            };
-
-            fixed3 Tex2DWithOffset(float2 offset, float2 uv, sampler2D tex)
+            half3 Tex2DWithOffset(float2 offset, float2 uv, sampler2D tex)
             {
                 return tex2D(tex, uv + offset * _MainTex_TexelSize.xy).rgb;
             }
 
-            v2f vert(appdata v)
+           Varyings MainVertex(Attributes input)
             {
-                v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                return o;
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
+                return output;
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                half4 col = tex2D(_MainTex, input.uv);
                 // 计算内描边的强度，上下左右差值越大越强
-                fixed3 innert = abs(Tex2DWithOffset(float2(_OutlineThickness, 0), i.uv, _MainTex) - Tex2DWithOffset(float2(-_OutlineThickness, 0), i.uv, _MainTex)) +
-                                abs(Tex2DWithOffset(float2(0, _OutlineThickness), i.uv, _MainTex) - Tex2DWithOffset(float2(0, -_OutlineThickness), i.uv, _MainTex));
+                half3 innert = abs(Tex2DWithOffset(float2(_OutlineThickness, 0), input.uv, _MainTex) - Tex2DWithOffset(float2(-_OutlineThickness, 0), input.uv, _MainTex)) +
+                                abs(Tex2DWithOffset(float2(0, _OutlineThickness), input.uv, _MainTex) - Tex2DWithOffset(float2(0, -_OutlineThickness), input.uv, _MainTex));
                 innert *= col.a * _OutlineAlpha; // 剔除透明像素点
                 col.rgb += length(innert) * _OutlineColor.rgb;
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

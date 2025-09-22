@@ -1,4 +1,4 @@
-Shader "Custom/URP/MaskTexture"
+Shader "Custom/MaskTexture"
 {
     Properties
     {
@@ -16,14 +16,15 @@ Shader "Custom/URP/MaskTexture"
     {
         Tags
         {
+            "RenderType" = "Opaque"
             "RenderPipeline" = "UniversalRenderPipeline"
         }
 
         Pass
         {
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
@@ -34,80 +35,74 @@ Shader "Custom/URP/MaskTexture"
             SAMPLER(sampler_BumpMap);
             TEXTURE2D(_SpecularMask);
             SAMPLER(sampler_SpecularMask);
+
             CBUFFER_START(UnityPreMaterial)
             half4 _Color;
             float4 _MainTex_ST;
+            float4 _BumpMap_ST;
             float _BumpScale;
             float _SpecularScale;
             half4 _Specular;
             half _Gloss;
             CBUFFER_END
 
-            struct a2v
+            struct Attributes
             {
-                float4 vertex : POSITION;
-                float3 normal : NORMAL;
-                float4 tangent : TANGENT;
+                float4 positionOS : POSITION;
+                float3 normalOS : NORMAL;
+                float4 tangentOS : TANGENT;
                 float2 texcoord : TEXCOORD0;
             };
 
-            struct v2f
+            struct Varyings
             {
-                float4 pos : SV_POSITION;
+                float4 positionCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 TtoW0 : TEXCOORD1;
                 float4 TtoW1 : TEXCOORD2;
                 float4 TtoW2 : TEXCOORD3;
             };
 
-            v2f vert(a2v v)
+            Varyings MainVertex(Attributes input)
             {
-                v2f o;
-                o.pos = TransformObjectToHClip(v.vertex.xyz);
-                o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
 
-                half3 worldPos = TransformObjectToWorld(v.vertex.xyz);
-                half3 worldNormal = TransformObjectToWorldNormal(v.normal);
-                half3 worldTangent = TransformObjectToWorldDir(v.tangent.xyz);
-                half3 worldBinormal = cross(worldNormal, worldTangent) * v.tangent.w;
+                half3 positionWS = TransformObjectToWorld(input.positionOS.xyz);
+                half3 normalWS = TransformObjectToWorldNormal(input.normalOS);
+                half3 tangentWS = TransformObjectToWorldDir(input.tangentOS.xyz);
+                half3 binormalWS = cross(normalWS, tangentWS) * input.tangentOS.w;
 
-                o.TtoW0 = float4(worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x);
-                o.TtoW1 = float4(worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y);
-                o.TtoW2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);
-                return o;
+                output.TtoW0 = float4(tangentWS.x, binormalWS.x, normalWS.x, positionWS.x);
+                output.TtoW1 = float4(tangentWS.y, binormalWS.y, normalWS.y, positionWS.y);
+                output.TtoW2 = float4(tangentWS.z, binormalWS.z, normalWS.z, positionWS.z);
+                return output;
             }
 
-            half4 frag(v2f i) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
-                float3 worldPos = float3(i.TtoW0.w, i.TtoW1.w, i.TtoW2.w);
-                // half3 bump = UnpackNormal(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, i.uv.zw));
-                // bump.xy *= _BumpScale;
-                // bump.z = sqrt(1 - saturate(dot( bump.xy,  bump.xy)));
-                half3 bump = UnpackNormalScale(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, i.uv), _BumpScale);
-                half3 worldNormal = normalize(half3(dot(i.TtoW0.xyz, bump), dot(i.TtoW1.xyz, bump), dot(i.TtoW2.xyz, bump)));
+                float3 positionWS = float3(input.TtoW0.w, input.TtoW1.w, input.TtoW2.w);
+                half3 bump = UnpackNormalScale(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, input.uv), _BumpScale);
+                half3 normalWS = normalize(half3(dot(input.TtoW0.xyz, bump), dot(input.TtoW1.xyz, bump), dot(input.TtoW2.xyz, bump)));
+                
+                Light light = GetMainLight();
+                half3 lightDir = normalize(light.direction);
 
-                Light light = GetMainLight();;
-                half3 worldLightDir = normalize(TransformObjectToWorldDir(light.direction));
+                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uv).rgb * _Color.rgb;
 
-                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv).rgb * _Color.rgb;
-
-                // half3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
                 half3 ambient = _GlossyEnvironmentColor.rgb * albedo;
 
-                // half3 diffuse = light.color.rgb * _Diffuse * saturate(dot(worldLightDir, worldNormal)) * albedo;
-                half3 diffuse = LightingLambert(light.color.rgb, worldLightDir, worldNormal) * albedo;
-
-                half3 viewDir = normalize(_WorldSpaceCameraPos.xyz - worldPos);
-                half specularMask = SAMPLE_TEXTURE2D(_SpecularMask, sampler_SpecularMask, i.uv).r * _SpecularScale;
-                // half3 halfViewDir = normalize(worldLightDir + viewDir);
-                // half3 specular = light.color.rgb * _Specular.rgb * pow(saturate(dot(halfViewDir, worldNormal)), _Gloss) * specularMask;
-                half3 specular = LightingSpecular(light.color.rgb, worldLightDir, worldNormal, viewDir, _Specular, _Gloss) * specularMask;
+                half3 diffuse = light.color.rgb * _Color.rgb * saturate(dot(lightDir, normalWS)) * albedo;
+                
+                half3 viewDir = GetWorldSpaceViewDir(positionWS);
+                half3 halfDir = normalize(lightDir + viewDir);
+                half specularMask = SAMPLE_TEXTURE2D(_SpecularMask, sampler_SpecularMask, input.uv).r * _SpecularScale;
+                half3 specular = light.color.rgb * _Specular.rgb * pow(saturate(dot(halfDir, normalWS)), _Gloss) * specularMask;
 
                 return half4(ambient + diffuse + specular, 1);
             }
             ENDHLSL
         }
     }
-
-    FallBack "UniversalRenderPipeline/Lit"
 }

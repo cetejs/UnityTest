@@ -1,4 +1,4 @@
-Shader "Custom/URP/RampTexture"
+Shader "Custom/RampTexture"
 {
     Properties
     {
@@ -12,20 +12,22 @@ Shader "Custom/URP/RampTexture"
     {
         Tags
         {
+            "RenderType" = "Opaque"
             "RenderPipeline" = "UniversalRenderPipeline"
         }
 
         Pass
         {
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             TEXTURE2D(_RampTex);
             SAMPLER(sampler_RampTex);
+
             CBUFFER_START(UnityPreMaterial)
             half4 _Diffuse;
             float4 _RampTex_ST;
@@ -33,54 +35,50 @@ Shader "Custom/URP/RampTexture"
             half _Gloss;
             CBUFFER_END
 
-            struct a2v
+            struct Attributes
             {
-                float4 vertex : POSITION;
-                float3 normal : NORMAL;
+                float4 position : POSITION;
+                float3 normalOS : NORMAL;
                 float3 texcoord : TEXCOORD0;
             };
 
-            struct v2f
+            struct Varyings
             {
-                float4 pos : SV_POSITION;
-                float3 worldNormal : TEXCOORD0;
-                float3 worldPos : TEXCOORD1;
+                float4 positionCS : SV_POSITION;
+                float3 normalWS : TEXCOORD0;
+                float3 positionWS : TEXCOORD1;
                 float2 uv : TEXCOORD2;
             };
 
-            v2f vert(a2v v)
+            Varyings MainVertex(Attributes input)
             {
-                v2f o;
-                o.pos = TransformObjectToHClip(v.vertex.xyz);
-                o.worldNormal = TransformObjectToWorldNormal(v.normal);
-                o.worldPos = TransformObjectToWorld(v.vertex.xyz);
-                o.uv = TRANSFORM_TEX(v.texcoord, _RampTex);
-                return o;
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.position.xyz);
+                output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+                output.positionWS = TransformObjectToWorld(input.position.xyz);
+                output.uv = TRANSFORM_TEX(input.texcoord, _RampTex);
+                return output;
             }
 
-            half4 frag(v2f i) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
                 Light light = GetMainLight();
-                half3 worldNormal = normalize(i.worldNormal);
-                half3 worldLightDir = normalize(TransformObjectToWorldDir(light.direction));
+                half3 normalWS = normalize(input.normalWS);
+                half3 lightDir = normalize(light.direction);
 
-                // half3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
                 half3 ambient = _GlossyEnvironmentColor.rgb;
 
-                half halfLambert = dot(worldLightDir, worldNormal) * 0.5 + 0.5;
-                // half3 diffuse = light.color.rgb * _Diffuse.rgb * saturate(dot(worldLightDir, worldNormal));
-                half3 diffuse = light.color.rgb * _Diffuse.rgb * SAMPLE_TEXTURE2D(_RampTex, sampler_RampTex, half2(halfLambert, halfLambert)).rgb;
+                half halfLambert = dot(lightDir, normalWS) * 0.5 + 0.5;
+                half3 ramp = SAMPLE_TEXTURE2D(_RampTex, sampler_RampTex, half2(halfLambert, halfLambert)).rgb;
+                half3 diffuse = light.color.rgb * _Diffuse.rgb * ramp;
                 
-                half3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.worldPos);
-                // half3 halfViewDir = normalize(worldLightDir + viewDir);
-                // half3 specular = light.color.rgb * _Specular.rgb * pow(saturate(dot(halfViewDir, worldNormal)), _Gloss);
-                half3 specular = LightingSpecular(light.color.rgb, worldLightDir, worldNormal, viewDir, _Specular, _Gloss);
+                half3 viewDir = normalize(_WorldSpaceCameraPos.xyz - input.positionWS);
+                half3 halfDir = normalize(lightDir + viewDir);
+                half3 specular = light.color.rgb * _Specular.rgb * pow(saturate(dot(halfDir, normalWS)), _Gloss);
 
                 return half4(ambient + diffuse + specular, 1);
             }
             ENDHLSL
         }
     }
-
-    FallBack "UniversalRenderPipeline/Lit"
 }

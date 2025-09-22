@@ -1,4 +1,4 @@
-Shader "Custom/URP/ToonLit"
+Shader "Custom/ToonLit"
 {
     Properties
     {
@@ -10,16 +10,14 @@ Shader "Custom/URP/ToonLit"
         Tags
         {
             "RenderType" = "Opaque"
-            "RenderType" = "UniversalPipeline"
+            "RenderPipeline" = "UniversalRenderPipeline"
         }
-
-        UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
 
         Pass
         {
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
 
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile_fragment _ _SHADOWS_SOFT
@@ -42,25 +40,24 @@ Shader "Custom/URP/ToonLit"
             {
                 float4 positionCS : SV_POSITION;
                 float3 normalWS : NORMAL;
-                float3 positionWS : TEXCOORD0;
                 float2 uv : TEXCOOR1;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
-            Varyings vert(Attributes input)
+            Varyings MainVertex(Attributes input)
             {
                 Varyings output;
-                output.positionCS = TransformObjectToHClip(input.positionOS);
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
                 output.uv = TRANSFORM_TEX(input.uv, _MainTex);
                 output.normalWS = TransformObjectToWorldNormal(input.normalOS);
                 return output;
             }
 
-            half4 frag(Varyings input) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
-                Light mainLight = GetMainLight(TransformWorldToShadowCoord(input.positionWS));
+                Light mainLight = GetMainLight();
                 float NoL = dot(input.normalWS, mainLight.direction);
                 float light = saturate(floor(NoL * 3) / (2 - 0.5)) * mainLight.color;
 

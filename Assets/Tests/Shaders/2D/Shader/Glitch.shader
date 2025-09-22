@@ -13,17 +13,26 @@
     }
     SubShader
     {
-        Tags { "Queue" = "Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags
+        {
+            "RenderPipeline" = "UniversalRenderPipeline"
+            "Queue" = "Transparent"
+        }
 
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
+            Blend SrcAlpha OneMinusSrcAlpha
 
-            sampler2D _MainTex;
+            HLSLPROGRAM
+            #pragma vertex MainVertex
+            #pragma fragment MainFragment
+
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
+            CBUFFER_START(UnityPreMaterial)
             float4 _MainTex_ST;
             float4 _MainTex_TexelSize;
 
@@ -34,16 +43,17 @@
             float _HorizontalShake;
             float _ColorDriftAmount;
             float _ColorDriftTime;
+            CBUFFER_END
 
-            struct appdata
+         struct Attributes
             {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
+                float4 positionOS : POSITION;
+                float2 texcoord : TEXCOORD0;
             };
 
-            struct v2f
+            struct Varyings
             {
-                float4 pos : SV_POSITION;
+                float4 positionCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
 
@@ -52,18 +62,18 @@
                 return frac(sin(dot(value, float2(12.9898, 78.233))) * 43758.5453);
             }
 
-            v2f vert(appdata v)
+            Varyings MainVertex(Attributes input)
             {
-                v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                return o;
+                Varyings output;
+                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
+                return output;
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            half4 MainFragment(Varyings input) : SV_Target
             {
-                float u = i.uv.x;
-                float v = i.uv.y;
+                float u = input.uv.x;
+                float v = input.uv.y;
 
                 // Scan line jitter
                 float jitter = rand(float2(v, _Time.x)) * 2 - 1;
@@ -78,12 +88,12 @@
                 // Color drift
                 float drift = sin(jump + _ColorDriftTime) * _ColorDriftAmount;
 
-                half4 src1 = tex2D(_MainTex, frac(float2(u + jitter + shake, jump)));
-                half4 src2 = tex2D(_MainTex, frac(float2(u + jitter + shake + drift, jump)));
+                half4 src1 = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, frac(float2(u + jitter + shake, jump)));
+                half4 src2 =  SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, frac(float2(u + jitter + shake + drift, jump)));
 
                 return half4(src1.r, src2.g, src1.b, src1.a);
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }
